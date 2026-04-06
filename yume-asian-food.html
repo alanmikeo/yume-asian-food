@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yume Asian Food</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+JP:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream:    #D6CFC0;
+  --cream2:   #C9C1B0;
+  --cream3:   #EAE4D8;
+  --navy:     #2B2D82;
+  --navy2:    #1E2060;
+  --navy3:    rgba(43,45,130,0.08);
+  --red:      #B71C1C;
+  --red2:     #D32F2F;
+  --ink:      #1A1A2E;
+  --white:    #FAF8F4;
+  --text:     #2A2620;
+  --text2:    #6B6357;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── TEXTURA DE FUNDO ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 60px;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(214, 207, 192, 0.96);
+  backdrop-filter: blur(16px);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(43,45,130,0.12);
+}
+.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-kanji {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.8rem; font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+.logo-text-wrap { display: flex; flex-direction: column; line-height: 1; }
+.logo-yume {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: 0.08em;
+  color: var(--red); line-height: 1;
+}
+.logo-asian {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.52rem; letter-spacing: 0.42em;
+  text-transform: uppercase; color: var(--navy);
+  font-weight: 500; margin-top: 2px;
+}
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 500;
+  color: var(--navy2); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--red); }
+.nav-order {
+  display: flex; gap: 10px;
+}
+.btn-ifood {
+  background: var(--red);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 10px 22px; text-decoration: none;
+  transition: all 0.25s; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.btn-ifood:hover { background: var(--red2); transform: translateY(-1px); }
+.btn-anota {
+  background: transparent;
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 9px 22px; text-decoration: none;
+  border: 1.5px solid var(--navy);
+  transition: all 0.25s; display: inline-flex; align-items: center; gap: 7px;
+}
+.btn-anota:hover { background: var(--navy); color: var(--white); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 60px 80px;
+  position: relative; z-index: 2;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.3s;
+}
+.hero-tag-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
+.hero-tag-text {
+  font-size: 0.62rem; letter-spacing: 0.4em;
+  text-transform: uppercase; font-weight: 500;
+  color: var(--text2);
+}
+.hero-kanji-bg {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(7rem, 14vw, 13rem);
+  font-weight: 700;
+  color: var(--navy);
+  opacity: 0.06;
+  line-height: 1;
+  position: absolute;
+  top: 50%; left: 40px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4.5rem, 9vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+  opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.5s;
+}
+.hero-title .t-navy { color: var(--navy); }
+.hero-title .t-red  { color: var(--red);  }
+.hero-sub-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text2);
+  font-weight: 400;
+  margin-bottom: 36px;
+  opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.65s;
+}
+.hero-desc {
+  font-size: 0.95rem; line-height: 1.85;
+  color: var(--text2); font-weight: 300;
+  max-width: 380px; margin-bottom: 44px;
+  opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.8s;
+}
+.hero-ctas {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.95s;
+}
+.cta-ifood {
+  background: var(--red);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 16px 36px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+}
+.cta-ifood:hover { background: var(--red2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(183,28,28,0.25); }
+.cta-anota {
+  background: transparent;
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 15px 36px; text-decoration: none;
+  border: 1.5px solid var(--navy);
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+}
+.cta-anota:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+.hero-right {
+  position: relative; overflow: hidden;
+  opacity: 0; animation: fadeIn 1.2s ease forwards; animation-delay: 0.4s;
+}
+.hero-img-main {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
+}
+.hero-badge {
+  position: absolute; bottom: 48px; right: 48px;
+  width: 110px; height: 110px; border-radius: 50%;
+  background: var(--red);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; cursor: pointer;
+  animation: spin-slow 12s linear infinite;
+  transition: transform 0.3s;
+}
+.hero-badge:hover { animation-play-state: paused; transform: scale(1.08); }
+.badge-kanji { font-family: 'Noto Serif JP', serif; font-size: 1.6rem; color: var(--white); line-height: 1; }
+.badge-text { font-size: 0.44rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-top: 3px; }
+
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── FAIXA DE DESTAQUE ── */
+.marquee-strip {
+  background: var(--navy);
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+.marquee-track {
+  display: inline-flex; gap: 0;
+  animation: marquee 22s linear infinite;
+}
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 20px;
+  padding: 0 32px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem; letter-spacing: 0.12em;
+  color: var(--cream3);
+}
+.marquee-item .dot { color: var(--red); font-size: 0.9rem; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.on { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+/* ── PRATOS EM DESTAQUE ── */
+#pratos {
+  padding: 120px 60px;
+  position: relative; z-index: 1;
+}
+.pratos-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 60px;
+}
+.section-eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.44em;
+  text-transform: uppercase; color: var(--red);
+  font-weight: 500; display: block; margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  line-height: 0.92; letter-spacing: 0.04em;
+  color: var(--navy);
+}
+.section-title .accent { color: var(--red); }
+.pratos-note {
+  font-size: 0.85rem; color: var(--text2);
+  font-weight: 300; max-width: 260px;
+  line-height: 1.7; text-align: right;
+}
+.pratos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.prato-card {
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  background: var(--cream2);
+}
+.prato-card:nth-child(1) { grid-row: span 2; }
+.prato-img {
+  width: 100%; height: 320px;
+  object-fit: cover; display: block;
+  transition: transform 0.7s cubic-bezier(.25,.46,.45,.94);
+}
+.prato-card:nth-child(1) .prato-img { height: 100%; min-height: 480px; }
+.prato-card:hover .prato-img { transform: scale(1.06); }
+.prato-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 20px 22px;
+  background: linear-gradient(to top, rgba(26,26,46,0.92) 0%, transparent 100%);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.prato-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem; letter-spacing: 0.06em;
+  color: var(--cream3); line-height: 1;
+}
+.prato-desc { font-size: 0.72rem; color: rgba(234,228,216,0.65); font-weight: 300; }
+.prato-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem; color: var(--red2);
+  letter-spacing: 0.05em; margin-top: 6px;
+}
+.prato-tag {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.54rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 4px 10px;
+}
+
+/* ── SOBRE / HISTÓRIA ── */
+#sobre {
+  padding: 120px 60px;
+  background: var(--navy);
+  position: relative; overflow: hidden;
+}
+.sobre-kanji-bg {
+  position: absolute; right: -40px; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28rem; font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  line-height: 1; pointer-events: none; user-select: none;
+}
+.sobre-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 96px; align-items: center;
+  max-width: 1360px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.sobre-img-wrap { position: relative; }
+.sobre-img {
+  width: 100%; height: 520px;
+  object-fit: cover; display: block;
+}
+.sobre-img-label {
+  position: absolute; bottom: -1px; right: -1px;
+  background: var(--red);
+  padding: 16px 22px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: 0.1em;
+  color: var(--white);
+}
+.sobre-eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.44em;
+  text-transform: uppercase; color: var(--cream2);
+  font-weight: 500; display: block; margin-bottom: 18px;
+}
+.sobre-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  line-height: 0.92; letter-spacing: 0.04em;
+  color: var(--cream3);
+  margin-bottom: 28px;
+}
+.sobre-title .accent { color: var(--red2); }
+.sobre-text {
+  font-size: 0.93rem; line-height: 1.9;
+  color: rgba(214,207,192,0.65); font-weight: 300;
+  margin-bottom: 40px;
+}
+.sobre-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 44px; }
+.pill {
+  border: 1px solid rgba(214,207,192,0.25);
+  color: var(--cream2);
+  font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 8px 18px;
+  transition: all 0.25s;
+}
+.pill:hover { border-color: var(--red2); color: var(--cream3); }
+
+/* ── CARDÁPIO / CATEGORIAS ── */
+#cardapio {
+  padding: 120px 60px;
+  position: relative; z-index: 1;
+}
+.cardapio-header { margin-bottom: 64px; text-align: center; }
+.cardapio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  max-width: 1360px; margin: 0 auto;
+}
+.cat-card {
+  background: var(--cream2);
+  padding: 40px 30px;
+  display: flex; flex-direction: column;
+  align-items: flex-start; gap: 14px;
+  border-top: 3px solid transparent;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.cat-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--navy);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(.25,.46,.45,.94);
+  z-index: 0;
+}
+.cat-card:hover::after { transform: scaleY(1); }
+.cat-card:hover { border-top-color: var(--red); }
+.cat-emoji { font-size: 2.2rem; position: relative; z-index: 1; }
+.cat-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: 0.06em;
+  color: var(--navy);
+  position: relative; z-index: 1;
+  transition: color 0.3s;
+}
+.cat-card:hover .cat-name { color: var(--cream3); }
+.cat-desc {
+  font-size: 0.78rem; color: var(--text2);
+  font-weight: 300; line-height: 1.6;
+  position: relative; z-index: 1;
+  transition: color 0.3s;
+}
+.cat-card:hover .cat-desc { color: rgba(214,207,192,0.6); }
+.cat-count {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.2em;
+  color: var(--red2);
+  position: relative; z-index: 1;
+  transition: color 0.3s;
+}
+.cat-card:hover .cat-count { color: var(--red2); }
+
+/* ── PEDIDO / CTA ── */
+#pedir {
+  background: var(--red);
+  padding: 100px 60px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.pedir-kanji {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 38rem; font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  pointer-events: none; user-select: none;
+  line-height: 1; white-space: nowrap;
+}
+.pedir-eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.44em;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+  font-weight: 500; display: block; margin-bottom: 18px;
+  position: relative; z-index: 1;
+}
+.pedir-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.9; letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.pedir-sub {
+  font-size: 0.95rem; color: rgba(255,255,255,0.72);
+  font-weight: 300; margin-bottom: 52px;
+  max-width: 440px; margin-left: auto; margin-right: auto;
+  line-height: 1.75;
+  position: relative; z-index: 1;
+}
+.pedir-btns {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.btn-pedir-ifood {
+  background: var(--white);
+  color: var(--red);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 18px 48px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+}
+.btn-pedir-ifood:hover { background: var(--cream3); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+.btn-pedir-anota {
+  background: transparent;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 17px 48px; text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+}
+.btn-pedir-anota:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
+/* ── DEPOIMENTOS ── */
+#depoimentos {
+  padding: 120px 60px;
+  background: var(--cream3);
+}
+.depo-header { text-align: center; margin-bottom: 64px; }
+.depo-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 3px; max-width: 1360px; margin: 0 auto;
+}
+.depo-card {
+  background: var(--cream);
+  padding: 40px 34px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+.depo-card:hover { border-bottom-color: var(--red); background: var(--cream2); }
+.depo-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+.star { color: var(--red); font-size: 0.82rem; }
+.depo-text {
+  font-size: 0.92rem; line-height: 1.82;
+  color: var(--text); font-weight: 300;
+  font-style: italic; margin-bottom: 28px;
+}
+.depo-divider { width: 24px; height: 2px; background: var(--navy); margin-bottom: 16px; }
+.depo-name { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 4px; }
+.depo-local { font-size: 0.7rem; color: var(--text2); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 70px 60px 36px;
+  position: relative;
+}
+.ft-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px; padding-bottom: 56px;
+  border-bottom: 1px solid rgba(214,207,192,0.08);
+  margin-bottom: 36px;
+}
+.ft-logo-kanji { font-family: 'Noto Serif JP', serif; font-size: 3rem; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 8px; }
+.ft-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; color: var(--red); line-height: 1; }
+.ft-logo-tag { font-size: 0.52rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(214,207,192,0.4); display: block; margin-top: 5px; margin-bottom: 18px; }
+.ft-brand-desc { font-size: 0.83rem; line-height: 1.8; color: rgba(214,207,192,0.3); font-weight: 300; max-width: 280px; }
+.ft-col h4 { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(214,207,192,0.4); margin-bottom: 22px; }
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.ft-col ul a { font-size: 0.84rem; color: rgba(214,207,192,0.35); text-decoration: none; transition: color 0.25s; }
+.ft-col ul a:hover { color: var(--cream2); }
+.ft-bottom { display: flex; justify-content: space-between; align-items: center; }
+.ft-copy { font-size: 0.68rem; color: rgba(214,207,192,0.2); letter-spacing: 0.04em; }
+.ft-social { display: flex; gap: 10px; }
+.soc {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(214,207,192,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(214,207,192,0.4); text-decoration: none;
+  font-size: 0.62rem; font-weight: 500;
+  transition: all 0.25s; font-family: 'DM Sans', sans-serif;
+}
+.soc:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  nav, nav.scrolled { padding: 20px 40px; }
+  #hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 130px 40px 70px; }
+  .hero-right { height: 420px; }
+  .hero-img-overlay { background: linear-gradient(to top, var(--cream) 0%, transparent 40%); }
+  #pratos, #sobre, #cardapio, #pedir, #depoimentos { padding: 90px 40px; }
+  .sobre-wrap { grid-template-columns: 1fr; gap: 56px; }
+  .sobre-img { height: 380px; }
+  .pratos-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .pratos-note { text-align: left; }
+  .pratos-grid { grid-template-columns: 1fr 1fr; }
+  .prato-card:nth-child(1) { grid-column: span 2; grid-row: auto; }
+  .cardapio-grid { grid-template-columns: 1fr 1fr; }
+  .ft-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-order { display: none; }
+  nav, nav.scrolled { padding: 18px 24px; }
+  #hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 110px 24px 60px; }
+  .hero-right { height: 320px; }
+  #pratos, #sobre, #cardapio, #pedir, #depoimentos { padding: 80px 24px; }
+  .pratos-grid { grid-template-columns: 1fr; }
+  .prato-card:nth-child(1) { grid-column: auto; }
+  .cardapio-grid { grid-template-columns: 1fr 1fr; }
+  .depo-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .ft-top { grid-template-columns: 1fr; gap: 40px; }
+  .ft-bottom { flex-direction: column; gap: 20px; }
+  footer { padding: 60px 24px 32px; }
+  .hero-ctas { flex-direction: column; }
+  .cta-ifood, .cta-anota { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo-wrap">
+    <span class="logo-kanji">夢</span>
+    <div class="logo-text-wrap">
+      <span class="logo-yume">YUME</span>
+      <span class="logo-asian">Asian Food</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#pratos">Pratos</a></li>
+    <li><a href="#cardapio">Cardápio</a></li>
+    <li><a href="#sobre">Nossa História</a></li>
+  </ul>
+  <div class="nav-order">
+    <!-- 🔗 TROCAR HREF pelo link real do iFood -->
+    <a href="https://www.ifood.com.br" target="_blank" class="btn-ifood">🛵 iFood</a>
+    <!-- 🔗 TROCAR HREF pelo link real do Anota.ai -->
+    <a href="https://anota.ai" target="_blank" class="btn-anota">📲 Anota.ai</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-kanji-bg">夢</div>
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span class="hero-tag-text">Delivery · Sushi & Asian Food</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="t-navy">YUME</span><br>
+      <span class="t-red">ASIAN</span><br>
+      <span class="t-navy">FOOD</span>
+    </h1>
+    <p class="hero-sub-title">Sabor autêntico, entregue até você</p>
+    <p class="hero-desc">
+      Do Japão para sua mesa — sushis artesanais, combinados especiais e muito mais. Peça agora pelo iFood ou Anota.ai e receba com rapidez.
+    </p>
+    <div class="hero-ctas">
+      <!-- 🔗 TROCAR HREF pelo link real do iFood -->
+      <a href="https://www.ifood.com.br" target="_blank" class="cta-ifood">
+        🛵 Pedir no iFood
+      </a>
+      <!-- 🔗 TROCAR HREF pelo link real do Anota.ai -->
+      <a href="https://anota.ai" target="_blank" class="cta-anota">
+        📲 Pedir no Anota.ai
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!--
+      📸 FOTO PRINCIPAL DO HERO
+      Troque o src abaixo pela melhor foto dos pratos ou do combinado principal
+      Sugestão: foto aérea de um combinado de sushi com boa iluminação
+    -->
+    <img class="hero-img-main"
+      src="img/combo.png"
+      alt="Sushi Yume Asian Food">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-badge">
+      <div class="badge-kanji">夢</div>
+      <div class="badge-text">Yume · Sonho</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAIXA MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Sushi Artesanal <span class="dot">✦</span></span>
+    <span class="marquee-item">Entrega Rápida <span class="dot">✦</span></span>
+    <span class="marquee-item">Combinados Especiais <span class="dot">✦</span></span>
+    <span class="marquee-item">Hot Roll <span class="dot">✦</span></span>
+    <span class="marquee-item">Temaki <span class="dot">✦</span></span>
+    <span class="marquee-item">Disponível no iFood <span class="dot">✦</span></span>
+    <span class="marquee-item">e no Anota.ai <span class="dot">✦</span></span>
+    <span class="marquee-item">Sushi Artesanal <span class="dot">✦</span></span>
+    <span class="marquee-item">Entrega Rápida <span class="dot">✦</span></span>
+    <span class="marquee-item">Combinados Especiais <span class="dot">✦</span></span>
+    <span class="marquee-item">Hot Roll <span class="dot">✦</span></span>
+    <span class="marquee-item">Temaki <span class="dot">✦</span></span>
+    <span class="marquee-item">Disponível no iFood <span class="dot">✦</span></span>
+    <span class="marquee-item">e no Anota.ai <span class="dot">✦</span></span>
+  </div>
+</div>
+
+<!-- PRATOS EM DESTAQUE -->
+<section id="pratos">
+  <div class="pratos-header reveal">
+    <div>
+      <span class="section-eyebrow">Destaques</span>
+      <h2 class="section-title">OS MAIS<br><span class="accent">PEDIDOS</span></h2>
+    </div>
+    <p class="pratos-note">Seleção dos pratos favoritos dos nossos clientes — feitos com ingredientes frescos todos os dias.</p>
+  </div>
+
+  <div class="pratos-grid">
+    <!--
+      📸 CARD 1 — PRATO PRINCIPAL (ocupa 2 linhas)
+      Troque o src pela foto do combinado mais vendido ou mais bonito
+    -->
+    <div class="prato-card reveal">
+      <span class="prato-tag">Mais Pedido</span>
+      <img class="prato-img"
+        src="img/sushi.png"
+        alt="Combinado Especial Yume">
+      <div class="prato-info">
+        <div class="prato-name">Combinado Especial Yume</div>
+        <div class="prato-desc">30 peças selecionadas — o melhor da casa</div>
+        <div class="prato-price">R$ 89,90</div>
+      </div>
+    </div>
+
+    <!--
+      📸 CARD 2 — Troque src pela foto do 2º prato destaque
+    -->
+    <div class="prato-card reveal d1">
+      <img class="prato-img"
+        src="img/temaki.png"
+        alt="Hot Roll Crocante">
+      <div class="prato-info">
+        <div class="prato-name">Hot Roll Crocante</div>
+        <div class="prato-desc">8 peças · empanadas e fritas</div>
+        <div class="prato-price">R$ 32,90</div>
+      </div>
+    </div>
+
+    <!--
+      📸 CARD 3 — Troque src pela foto do 3º prato destaque
+    -->
+    <div class="prato-card reveal d2">
+      <img class="prato-img"
+        src="img/oniguiri.png"
+        alt="Temaki Salmão">
+      <div class="prato-info">
+        <div class="prato-name">Temaki Salmão</div>
+        <div class="prato-desc">Salmão fresco com cream cheese</div>
+        <div class="prato-price">R$ 22,90</div>
+      </div>
+    </div>
+
+    <!--
+      📸 CARD 4 — Troque src pela foto do 4º prato destaque
+    -->
+    <div class="prato-card reveal d1">
+      <img class="prato-img"
+        src="img/yakisoba.png"
+        alt="Uramaki Especial">
+      <div class="prato-info">
+        <div class="prato-name">Uramaki Especial</div>
+        <div class="prato-desc">8 peças · camarão grelhado</div>
+        <div class="prato-price">R$ 28,90</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE / HISTÓRIA -->
+<section id="sobre">
+  <div class="sobre-kanji-bg">夢</div>
+  <div class="sobre-wrap">
+    <div class="sobre-img-wrap reveal">
+      <!--
+        📸 FOTO DA SEÇÃO SOBRE
+        Troque pelo chef preparando os pratos, ou uma foto do ambiente/processo
+      -->
+      <img class="sobre-img"
+        src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=900&q=85"
+        alt="Chef Yume Asian Food">
+      <div class="sobre-img-label">Feito com dedicação</div>
+    </div>
+    <div class="reveal d2">
+      <span class="sobre-eyebrow">Nossa História</span>
+      <h2 class="sobre-title">COMIDA DE<br><span class="accent">VERDADE.</span><br>TODO DIA.</h2>
+      <p class="sobre-text">
+        Yume significa <em>sonho</em> em japonês — e foi exatamente um sonho que nos trouxe até aqui. Nascemos da paixão pela culinária asiática autêntica, com ingredientes selecionados e preparo artesanal em cada peça.
+        <br><br>
+        Cada combinado é montado com cuidado, no mesmo dia, para você receber um sushi fresco e saboroso onde estiver.
+      </p>
+      <div class="sobre-pills">
+        <span class="pill">🐟 Salmão Fresco</span>
+        <span class="pill">🍚 Arroz Temperado</span>
+        <span class="pill">🌿 Ingredientes Selecionados</span>
+        <span class="pill">📦 Embalagem Segura</span>
+        <span class="pill">⚡ Entrega Rápida</span>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="https://www.ifood.com.br" target="_blank" class="btn-ifood" style="padding:15px 32px;font-size:0.72rem;">🛵 Pedir no iFood</a>
+        <a href="https://anota.ai" target="_blank" class="btn-anota" style="padding:14px 32px;font-size:0.72rem;">📲 Pedir no Anota.ai</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIAS DO CARDÁPIO -->
+<section id="cardapio">
+  <div class="cardapio-header">
+    <span class="section-eyebrow" style="justify-content:center;display:block;">Cardápio</span>
+    <h2 class="section-title reveal" style="color:var(--navy);">O QUE <span class="accent">TEMOS</span></h2>
+  </div>
+  <div class="cardapio-grid">
+    <div class="cat-card reveal">
+      <div class="cat-emoji">🍱</div>
+      <div class="cat-name">Combinados</div>
+      <div class="cat-desc">Do iniciante ao amante de sushi — combinados para todos os gostos.</div>
+      <div class="cat-count">Ver no cardápio →</div>
+    </div>
+    <div class="cat-card reveal d1">
+      <div class="cat-emoji">🌯</div>
+      <div class="cat-name">Temaki</div>
+      <div class="cat-desc">O cone perfeito — salmão, atum, camarão e opções especiais.</div>
+      <div class="cat-count">Ver no cardápio →</div>
+    </div>
+    <div class="cat-card reveal d2">
+      <div class="cat-emoji">🔥</div>
+      <div class="cat-name">Hot Roll</div>
+      <div class="cat-desc">Crocante por fora, recheado por dentro. Os favoritos da casa.</div>
+      <div class="cat-count">Ver no cardápio →</div>
+    </div>
+    <div class="cat-card reveal d3">
+      <div class="cat-emoji">🥢</div>
+      <div class="cat-name">Especiais</div>
+      <div class="cat-desc">Criações exclusivas do chef com ingredientes premium.</div>
+      <div class="cat-count">Ver no cardápio →</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA PEDIDO -->
+<section id="pedir">
+  <div class="pedir-kanji">夢</div>
+  <span class="pedir-eyebrow reveal">Bora pedir?</span>
+  <h2 class="pedir-title reveal">PEÇA<br>AGORA</h2>
+  <p class="pedir-sub reveal">Escolha sua plataforma favorita e receba seus sushis fresquinhos em casa.</p>
+  <div class="pedir-btns reveal">
+    <!-- 🔗 TROCAR HREF pelos links reais -->
+    <a href="https://www.ifood.com.br" target="_blank" class="btn-pedir-ifood">🛵 Abrir no iFood</a>
+    <a href="https://anota.ai" target="_blank" class="btn-pedir-anota">📲 Abrir no Anota.ai</a>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="depo-header">
+    <span class="section-eyebrow">Avaliações</span>
+    <h2 class="section-title reveal" style="color:var(--navy);">O QUE DIZEM <span class="accent">NOSSOS FÃS</span></h2>
+  </div>
+  <div class="depo-grid">
+    <div class="depo-card reveal">
+      <div class="depo-stars">★★★★★</div>
+      <p class="depo-text">"Melhor sushi de delivery da cidade! O salmão é sempre fresquíssimo e as peças chegam perfeitas. Já pedi mais de 20 vezes."</p>
+      <div class="depo-divider"></div>
+      <div class="depo-name">Mariana S.</div>
+      <div class="depo-local">Avaliação no iFood</div>
+    </div>
+    <div class="depo-card reveal d1">
+      <div class="depo-stars">★★★★★</div>
+      <p class="depo-text">"O combinado especial Yume é simplesmente perfeito. Quantidade boa, preço justo e entrega bem rápida. Já é meu pedido fixo toda sexta."</p>
+      <div class="depo-divider"></div>
+      <div class="depo-name">Lucas M.</div>
+      <div class="depo-local">Avaliação no Anota.ai</div>
+    </div>
+    <div class="depo-card reveal d2">
+      <div class="depo-stars">★★★★★</div>
+      <p class="depo-text">"Hot roll crocante sensacional! Nunca vi um delivery que mantém tão bem a textura. Embalagem ótima e atendimento muito atencioso."</p>
+      <div class="depo-divider"></div>
+      <div class="depo-name">Camila R.</div>
+      <div class="depo-local">Avaliação no iFood</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-logo-kanji">夢</div>
+      <div class="ft-logo-name">YUME</div>
+      <span class="ft-logo-tag">Asian Food · Delivery</span>
+      <p class="ft-brand-desc">Sushi artesanal entregue com rapidez e cuidado. Disponível no iFood e Anota.ai.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Cardápio</h4>
+      <ul>
+        <li><a href="#">Combinados</a></li>
+        <li><a href="#">Temaki</a></li>
+        <li><a href="#">Hot Roll</a></li>
+        <li><a href="#">Especiais</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Pedidos</h4>
+      <ul>
+        <!-- 🔗 TROCAR HREF pelos links reais -->
+        <li><a href="https://www.ifood.com.br" target="_blank">iFood</a></li>
+        <li><a href="https://anota.ai" target="_blank">Anota.ai</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">© 2025 Yume Asian Food. Todos os direitos reservados.</p>
+    <div class="ft-social">
+      <a href="#" class="soc">IG</a>
+      <a href="#" class="soc">WA</a>
+      <a href="#" class="soc">TK</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+  // Reveal on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
