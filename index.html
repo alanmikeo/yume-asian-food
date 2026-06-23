@@ -3,7 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yume Asian Food</title>
+<title>Yume Asian Food | Sushi e comida asiática em Guarapuava</title>
+<meta name="description" content="Yume Asian Food em Guarapuava: sushi, pokes, temakis, combinados e comida asiática para delivery. Peça pelo iFood, Anota.ai ou WhatsApp.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Yume Asian Food">
+<meta name="theme-color" content="#2B2D82">
+<meta name="geo.region" content="BR-PR">
+<meta name="geo.placename" content="Guarapuava">
+<meta name="format-detection" content="telephone=yes">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Yume Asian Food">
+<meta property="og:url" content="https://alanmikeo.github.io/yume-asian-food/">
+<meta property="og:title" content="Yume Asian Food | Sushi e comida asiática em Guarapuava">
+<meta property="og:description" content="Sushi, pokes, temakis, combinados e comida asiática para delivery em Guarapuava. Peça pelo iFood, Anota.ai ou WhatsApp.">
+<meta property="og:image" content="https://alanmikeo.github.io/yume-asian-food/img/combo.png">
+<meta property="og:image:alt" content="Combinado da Yume Asian Food">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yume Asian Food | Sushi e comida asiática em Guarapuava">
+<meta name="twitter:description" content="Delivery de sushi, pokes, temakis e combinados em Guarapuava.">
+<meta name="twitter:image" content="https://alanmikeo.github.io/yume-asian-food/img/combo.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://alanmikeo.github.io/yume-asian-food/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Yume Asian Food",
+  "url": "https://alanmikeo.github.io/yume-asian-food/",
+  "image": "https://alanmikeo.github.io/yume-asian-food/img/combo.png",
+  "description": "Delivery de sushi, pokes, temakis, combinados e comida asiática em Guarapuava.",
+  "servesCuisine": ["Japonesa", "Asiática", "Sushi", "Poke"],
+  "telephone": "+554298159552",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Guarapuava",
+    "addressRegion": "PR",
+    "addressCountry": "BR"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Guarapuava"
+  },
+  "hasMenu": "https://pedido.anota.ai/loja/yume-1",
+  "sameAs": [
+    "https://www.instagram.com/yume_asianfood/",
+    "https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574",
+    "https://pedido.anota.ai/loja/yume-1"
+  ],
+  "potentialAction": [
+    {
+      "@type": "OrderAction",
+      "target": "https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574"
+    },
+    {
+      "@type": "OrderAction",
+      "target": "https://pedido.anota.ai/loja/yume-1"
+    },
+    {
+      "@type": "CommunicateAction",
+      "target": "https://api.whatsapp.com/send?phone=554298159552"
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+JP:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -85,18 +150,18 @@ nav.scrolled {
   display: flex; gap: 10px;
 }
 .btn-ifood {
-  background: var(--red);
-  color: var(--white);
+  background: var(--white);
+  color: var(--red);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.65rem; font-weight: 500;
   letter-spacing: 0.14em; text-transform: uppercase;
   padding: 10px 22px; text-decoration: none;
-  transition: all 0.25s; border: none; cursor: pointer;
+  transition: all 0.25s; border: 1.5px solid var(--red); cursor: pointer;
   display: inline-flex; align-items: center; gap: 7px;
 }
-.btn-ifood:hover { background: var(--red2); transform: translateY(-1px); }
+.btn-ifood:hover { background: var(--white); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(183,28,28,0.14); }
 .btn-anota {
-  background: transparent;
+  background: var(--white);
   color: var(--navy);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.65rem; font-weight: 500;
@@ -105,11 +170,40 @@ nav.scrolled {
   border: 1.5px solid var(--navy);
   transition: all 0.25s; display: inline-flex; align-items: center; gap: 7px;
 }
-.btn-anota:hover { background: var(--navy); color: var(--white); }
+.btn-anota:hover { background: var(--cream3); color: var(--navy); transform: translateY(-1px); }
+.btn-logo {
+  display: block;
+  width: auto;
+  height: 18px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+.btn-logo-ifood {
+  width: 42px;
+  height: auto;
+  background: var(--white);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+.btn-logo-anota {
+  height: 34px;
+  margin-block: -8px;
+}
+.cta-ifood .btn-logo-ifood,
+.cta-anota .btn-logo-anota,
+.btn-pedir-ifood .btn-logo-ifood,
+.btn-pedir-anota .btn-logo-anota {
+  height: 38px;
+}
+.cta-ifood .btn-logo-ifood,
+.btn-pedir-ifood .btn-logo-ifood {
+  width: 56px;
+}
 
 /* ── HERO ── */
 #hero {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100svh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -117,12 +211,12 @@ nav.scrolled {
 }
 .hero-left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 140px 60px 80px;
+  padding: 112px 60px 48px;
   position: relative; z-index: 2;
 }
 .hero-tag {
   display: inline-flex; align-items: center; gap: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.3s;
 }
 .hero-tag-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
@@ -146,7 +240,7 @@ nav.scrolled {
 }
 .hero-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4.5rem, 9vw, 9rem);
+  font-size: clamp(4rem, 8vw, 7.6rem);
   line-height: 0.9;
   letter-spacing: 0.03em;
   margin-bottom: 8px;
@@ -161,13 +255,13 @@ nav.scrolled {
   text-transform: uppercase;
   color: var(--text2);
   font-weight: 400;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.65s;
 }
 .hero-desc {
   font-size: 0.95rem; line-height: 1.85;
   color: var(--text2); font-weight: 300;
-  max-width: 380px; margin-bottom: 44px;
+  max-width: 380px; margin-bottom: 30px;
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.8s;
 }
 .hero-ctas {
@@ -175,18 +269,19 @@ nav.scrolled {
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.95s;
 }
 .cta-ifood {
-  background: var(--red);
-  color: var(--white);
+  background: var(--white);
+  color: var(--red);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.16em; text-transform: uppercase;
   padding: 16px 36px; text-decoration: none;
+  border: 1.5px solid var(--red);
   display: inline-flex; align-items: center; gap: 10px;
   transition: all 0.25s;
 }
-.cta-ifood:hover { background: var(--red2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(183,28,28,0.25); }
+.cta-ifood:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(183,28,28,0.18); }
 .cta-anota {
-  background: transparent;
+  background: var(--white);
   color: var(--navy);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem; font-weight: 500;
@@ -196,7 +291,7 @@ nav.scrolled {
   display: inline-flex; align-items: center; gap: 10px;
   transition: all 0.25s;
 }
-.cta-anota:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+.cta-anota:hover { background: var(--cream3); color: var(--navy); transform: translateY(-2px); }
 .hero-right {
   position: relative; overflow: hidden;
   opacity: 0; animation: fadeIn 1.2s ease forwards; animation-delay: 0.4s;
@@ -211,7 +306,7 @@ nav.scrolled {
   background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
 }
 .hero-badge {
-  position: absolute; bottom: 48px; right: 48px;
+  position: absolute; bottom: 92px; right: 48px;
   width: 110px; height: 110px; border-radius: 50%;
   background: var(--red);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -233,7 +328,11 @@ nav.scrolled {
   padding: 14px 0;
   overflow: hidden;
   white-space: nowrap;
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
 }
 .marquee-track {
   display: inline-flex; gap: 0;
@@ -289,30 +388,45 @@ nav.scrolled {
   position: relative; overflow: hidden;
   cursor: pointer;
   background: var(--cream2);
+  min-height: 250px;
+  display: flex;
+  align-items: flex-end;
 }
-.prato-card:nth-child(1) { grid-row: span 2; }
-.prato-img {
-  width: 100%; height: 320px;
-  object-fit: cover; display: block;
-  transition: transform 0.7s cubic-bezier(.25,.46,.45,.94);
+.prato-card:nth-child(1) { grid-row: span 2; min-height: 503px; }
+.prato-card::before {
+  content: '夢';
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 7rem;
+  line-height: 1;
+  color: rgba(43,45,130,0.08);
 }
-.prato-card:nth-child(1) .prato-img { height: 100%; min-height: 480px; }
-.prato-card:hover .prato-img { transform: scale(1.06); }
+.prato-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(43,45,130,0.10), rgba(183,28,28,0.08));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.prato-card:hover::after { opacity: 1; }
 .prato-info {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 20px 22px;
-  background: linear-gradient(to top, rgba(26,26,46,0.92) 0%, transparent 100%);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 28px 26px;
   display: flex; flex-direction: column; gap: 4px;
 }
 .prato-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.3rem; letter-spacing: 0.06em;
-  color: var(--cream3); line-height: 1;
+  font-size: 1.55rem; letter-spacing: 0.06em;
+  color: var(--navy); line-height: 1;
 }
-.prato-desc { font-size: 0.72rem; color: rgba(234,228,216,0.65); font-weight: 300; }
+.prato-desc { font-size: 0.78rem; color: var(--text2); font-weight: 300; line-height: 1.55; }
 .prato-price {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem; color: var(--red2);
+  font-size: 1.35rem; color: var(--red2);
   letter-spacing: 0.05em; margin-top: 6px;
 }
 .prato-tag {
@@ -344,18 +458,17 @@ nav.scrolled {
   max-width: 1360px; margin: 0 auto;
   position: relative; z-index: 1;
 }
-.sobre-img-wrap { position: relative; }
-.sobre-img {
-  width: 100%; height: 520px;
-  object-fit: cover; display: block;
+.sobre-img-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
 }
-.sobre-img-label {
-  position: absolute; bottom: -1px; right: -1px;
-  background: var(--red);
-  padding: 16px 22px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1rem; letter-spacing: 0.1em;
-  color: var(--white);
+.sobre-img {
+  width: min(100%, 440px);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 .sobre-eyebrow {
   font-size: 0.6rem; letter-spacing: 0.44em;
@@ -494,19 +607,19 @@ nav.scrolled {
   display: inline-flex; align-items: center; gap: 10px;
   transition: all 0.25s;
 }
-.btn-pedir-ifood:hover { background: var(--cream3); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+.btn-pedir-ifood:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
 .btn-pedir-anota {
-  background: transparent;
-  color: var(--white);
+  background: var(--white);
+  color: var(--navy);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.75rem; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase;
   padding: 17px 48px; text-decoration: none;
-  border: 1.5px solid rgba(255,255,255,0.5);
+  border: 1.5px solid var(--navy);
   display: inline-flex; align-items: center; gap: 10px;
   transition: all 0.25s;
 }
-.btn-pedir-anota:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+.btn-pedir-anota:hover { background: var(--cream3); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
 
 /* ── DEPOIMENTOS ── */
 #depoimentos {
@@ -558,27 +671,31 @@ footer {
 .ft-col ul a:hover { color: var(--cream2); }
 .ft-bottom { display: flex; justify-content: space-between; align-items: center; }
 .ft-copy { font-size: 0.68rem; color: rgba(214,207,192,0.2); letter-spacing: 0.04em; }
-.ft-social { display: flex; gap: 10px; }
-.soc {
-  width: 36px; height: 36px;
-  border: 1px solid rgba(214,207,192,0.12);
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(214,207,192,0.4); text-decoration: none;
-  font-size: 0.62rem; font-weight: 500;
-  transition: all 0.25s; font-family: 'DM Sans', sans-serif;
+.developer-credit {
+  background: #000000;
+  padding: 24px;
+  text-align: center;
 }
-.soc:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+.developer-credit a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+.developer-credit span { font-weight: 700; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1100px) {
   nav, nav.scrolled { padding: 20px 40px; }
-  #hero { grid-template-columns: 1fr; min-height: auto; }
+  #hero { grid-template-columns: 1fr; height: auto; min-height: auto; overflow: visible; }
   .hero-left { padding: 130px 40px 70px; }
   .hero-right { height: 420px; }
+  .hero-badge { bottom: 48px; }
+  .marquee-strip { position: relative; grid-column: 1 / -1; width: 100%; }
   .hero-img-overlay { background: linear-gradient(to top, var(--cream) 0%, transparent 40%); }
   #pratos, #sobre, #cardapio, #pedir, #depoimentos { padding: 90px 40px; }
   .sobre-wrap { grid-template-columns: 1fr; gap: 56px; }
-  .sobre-img { height: 380px; }
+  .sobre-img { width: min(100%, 360px); height: auto; }
   .pratos-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   .pratos-note { text-align: left; }
   .pratos-grid { grid-template-columns: 1fr 1fr; }
@@ -603,6 +720,9 @@ footer {
   footer { padding: 60px 24px 32px; }
   .hero-ctas { flex-direction: column; }
   .cta-ifood, .cta-anota { justify-content: center; }
+  .btn-logo-ifood { width: 48px; }
+  .cta-ifood .btn-logo-ifood,
+  .btn-pedir-ifood .btn-logo-ifood { width: 58px; }
 }
 </style>
 </head>
@@ -623,10 +743,14 @@ footer {
     <li><a href="#sobre">Nossa História</a></li>
   </ul>
   <div class="nav-order">
-    <!-- 🔗 TROCAR HREF pelo link real do iFood -->
-    <a href="https://www.ifood.com.br" target="_blank" class="btn-ifood">🛵 iFood</a>
-    <!-- 🔗 TROCAR HREF pelo link real do Anota.ai -->
-    <a href="https://anota.ai" target="_blank" class="btn-anota">📲 Anota.ai</a>
+    <a href="https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574" target="_blank" class="btn-ifood">
+      <img class="btn-logo btn-logo-ifood" src="img/ifood-nobg.png" alt="">
+      iFood
+    </a>
+    <a href="https://pedido.anota.ai/loja/yume-1" target="_blank" class="btn-anota">
+      <img class="btn-logo btn-logo-anota" src="img/anotaai-nobg.png" alt="">
+      Anota.ai
+    </a>
   </div>
 </nav>
 
@@ -648,13 +772,13 @@ footer {
       Do Japão para sua mesa — sushis artesanais, combinados especiais e muito mais. Peça agora pelo iFood ou Anota.ai e receba com rapidez.
     </p>
     <div class="hero-ctas">
-      <!-- 🔗 TROCAR HREF pelo link real do iFood -->
-      <a href="https://www.ifood.com.br" target="_blank" class="cta-ifood">
-        🛵 Pedir no iFood
+      <a href="https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574" target="_blank" class="cta-ifood">
+        <img class="btn-logo btn-logo-ifood" src="img/ifood-nobg.png" alt="">
+        Pedir no iFood
       </a>
-      <!-- 🔗 TROCAR HREF pelo link real do Anota.ai -->
-      <a href="https://anota.ai" target="_blank" class="cta-anota">
-        📲 Pedir no Anota.ai
+      <a href="https://pedido.anota.ai/loja/yume-1" target="_blank" class="cta-anota">
+        <img class="btn-logo btn-logo-anota" src="img/anotaai-nobg.png" alt="">
+        Pedir no Anota.ai
       </a>
     </div>
   </div>
@@ -666,34 +790,34 @@ footer {
     -->
     <img class="hero-img-main"
       src="img/combo.png"
-      alt="Sushi Yume Asian Food">
+      alt="Combinado Yume Asian Food">
     <div class="hero-img-overlay"></div>
     <div class="hero-badge">
       <div class="badge-kanji">夢</div>
-      <div class="badge-text">Yume · Sonho</div>
+      <div class="badge-text">Yume · Asian Food</div>
+    </div>
+  </div>
+
+  <!-- FAIXA MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span class="marquee-item">Sushi Artesanal <span class="dot">✦</span></span>
+      <span class="marquee-item">Entrega Rápida <span class="dot">✦</span></span>
+      <span class="marquee-item">Combinados Especiais <span class="dot">✦</span></span>
+      <span class="marquee-item">Hot Roll <span class="dot">✦</span></span>
+      <span class="marquee-item">Temaki <span class="dot">✦</span></span>
+      <span class="marquee-item">Disponível no iFood <span class="dot">✦</span></span>
+      <span class="marquee-item">e no Anota.ai <span class="dot">✦</span></span>
+      <span class="marquee-item">Sushi Artesanal <span class="dot">✦</span></span>
+      <span class="marquee-item">Entrega Rápida <span class="dot">✦</span></span>
+      <span class="marquee-item">Combinados Especiais <span class="dot">✦</span></span>
+      <span class="marquee-item">Hot Roll <span class="dot">✦</span></span>
+      <span class="marquee-item">Temaki <span class="dot">✦</span></span>
+      <span class="marquee-item">Disponível no iFood <span class="dot">✦</span></span>
+      <span class="marquee-item">e no Anota.ai <span class="dot">✦</span></span>
     </div>
   </div>
 </section>
-
-<!-- FAIXA MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <span class="marquee-item">Sushi Artesanal <span class="dot">✦</span></span>
-    <span class="marquee-item">Entrega Rápida <span class="dot">✦</span></span>
-    <span class="marquee-item">Combinados Especiais <span class="dot">✦</span></span>
-    <span class="marquee-item">Hot Roll <span class="dot">✦</span></span>
-    <span class="marquee-item">Temaki <span class="dot">✦</span></span>
-    <span class="marquee-item">Disponível no iFood <span class="dot">✦</span></span>
-    <span class="marquee-item">e no Anota.ai <span class="dot">✦</span></span>
-    <span class="marquee-item">Sushi Artesanal <span class="dot">✦</span></span>
-    <span class="marquee-item">Entrega Rápida <span class="dot">✦</span></span>
-    <span class="marquee-item">Combinados Especiais <span class="dot">✦</span></span>
-    <span class="marquee-item">Hot Roll <span class="dot">✦</span></span>
-    <span class="marquee-item">Temaki <span class="dot">✦</span></span>
-    <span class="marquee-item">Disponível no iFood <span class="dot">✦</span></span>
-    <span class="marquee-item">e no Anota.ai <span class="dot">✦</span></span>
-  </div>
-</div>
 
 <!-- PRATOS EM DESTAQUE -->
 <section id="pratos">
@@ -706,61 +830,44 @@ footer {
   </div>
 
   <div class="pratos-grid">
-    <!--
-      📸 CARD 1 — PRATO PRINCIPAL (ocupa 2 linhas)
-      Troque o src pela foto do combinado mais vendido ou mais bonito
-    -->
     <div class="prato-card reveal">
       <span class="prato-tag">Mais Pedido</span>
-      <img class="prato-img"
-        src="img/sushi.png"
-        alt="Combinado Especial Yume">
       <div class="prato-info">
-        <div class="prato-name">Combinado Especial Yume</div>
-        <div class="prato-desc">30 peças selecionadas — o melhor da casa</div>
-        <div class="prato-price">R$ 89,90</div>
+        <div class="prato-name">POKE SALMÃO</div>
+        <div class="prato-desc">200g de shari, 200g de salmão, 5 acompanhamentos e molho</div>
+        <div class="prato-price">R$ 70,22</div>
       </div>
     </div>
 
-    <!--
-      📸 CARD 2 — Troque src pela foto do 2º prato destaque
-    -->
     <div class="prato-card reveal d1">
-      <img class="prato-img"
-        src="img/temaki.png"
-        alt="Hot Roll Crocante">
       <div class="prato-info">
-        <div class="prato-name">Hot Roll Crocante</div>
-        <div class="prato-desc">8 peças · empanadas e fritas</div>
-        <div class="prato-price">R$ 32,90</div>
+        <div class="prato-name">COMBINADIN POKA FOMI</div>
+        <div class="prato-desc">19 peças com sashimi, uramaki, niguiri e hot</div>
+        <div class="prato-price">R$ 90,00</div>
       </div>
     </div>
 
-    <!--
-      📸 CARD 3 — Troque src pela foto do 3º prato destaque
-    -->
     <div class="prato-card reveal d2">
-      <img class="prato-img"
-        src="img/oniguiri.png"
-        alt="Temaki Salmão">
       <div class="prato-info">
-        <div class="prato-name">Temaki Salmão</div>
-        <div class="prato-desc">Salmão fresco com cream cheese</div>
-        <div class="prato-price">R$ 22,90</div>
+        <div class="prato-name">TEMAKÉLIS SALMÃO</div>
+        <div class="prato-desc">Temaki com 120g de salmão</div>
+        <div class="prato-price">R$ 36,00</div>
       </div>
     </div>
 
-    <!--
-      📸 CARD 4 — Troque src pela foto do 4º prato destaque
-    -->
     <div class="prato-card reveal d1">
-      <img class="prato-img"
-        src="img/yakisoba.png"
-        alt="Uramaki Especial">
       <div class="prato-info">
-        <div class="prato-name">Uramaki Especial</div>
-        <div class="prato-desc">8 peças · camarão grelhado</div>
-        <div class="prato-price">R$ 28,90</div>
+        <div class="prato-name">ONIGIRI SALMÃO</div>
+        <div class="prato-desc">2 bolinchan de arroz com salmão</div>
+        <div class="prato-price">R$ 40,00</div>
+      </div>
+    </div>
+
+    <div class="prato-card reveal d2">
+      <div class="prato-info">
+        <div class="prato-name">CEVICHE SALMÃO YUME</div>
+        <div class="prato-desc">Ceviche fresco de salmão</div>
+        <div class="prato-price">R$ 53,20</div>
       </div>
     </div>
   </div>
@@ -771,14 +878,9 @@ footer {
   <div class="sobre-kanji-bg">夢</div>
   <div class="sobre-wrap">
     <div class="sobre-img-wrap reveal">
-      <!--
-        📸 FOTO DA SEÇÃO SOBRE
-        Troque pelo chef preparando os pratos, ou uma foto do ambiente/processo
-      -->
       <img class="sobre-img"
-        src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=900&q=85"
-        alt="Chef Yume Asian Food">
-      <div class="sobre-img-label">Feito com dedicação</div>
+        src="img/nossa-história.png"
+        alt="Yume Asian Food">
     </div>
     <div class="reveal d2">
       <span class="sobre-eyebrow">Nossa História</span>
@@ -796,8 +898,14 @@ footer {
         <span class="pill">⚡ Entrega Rápida</span>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="https://www.ifood.com.br" target="_blank" class="btn-ifood" style="padding:15px 32px;font-size:0.72rem;">🛵 Pedir no iFood</a>
-        <a href="https://anota.ai" target="_blank" class="btn-anota" style="padding:14px 32px;font-size:0.72rem;">📲 Pedir no Anota.ai</a>
+        <a href="https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574" target="_blank" class="btn-ifood" style="padding:15px 32px;font-size:0.72rem;">
+          <img class="btn-logo btn-logo-ifood" src="img/ifood-nobg.png" alt="">
+          Pedir no iFood
+        </a>
+        <a href="https://pedido.anota.ai/loja/yume-1" target="_blank" class="btn-anota" style="padding:14px 32px;font-size:0.72rem;">
+          <img class="btn-logo btn-logo-anota" src="img/anotaai-nobg.png" alt="">
+          Pedir no Anota.ai
+        </a>
       </div>
     </div>
   </div>
@@ -811,28 +919,70 @@ footer {
   </div>
   <div class="cardapio-grid">
     <div class="cat-card reveal">
-      <div class="cat-emoji">🍱</div>
-      <div class="cat-name">Combinados</div>
-      <div class="cat-desc">Do iniciante ao amante de sushi — combinados para todos os gostos.</div>
-      <div class="cat-count">Ver no cardápio →</div>
+      <div class="cat-emoji">🍚</div>
+      <div class="cat-name">Poke Individual</div>
+      <div class="cat-desc">Pokes com shari, proteína, acompanhamentos e molho.</div>
+      <div class="cat-count">18 opções</div>
     </div>
     <div class="cat-card reveal d1">
-      <div class="cat-emoji">🌯</div>
-      <div class="cat-name">Temaki</div>
-      <div class="cat-desc">O cone perfeito — salmão, atum, camarão e opções especiais.</div>
-      <div class="cat-count">Ver no cardápio →</div>
+      <div class="cat-emoji">🍙</div>
+      <div class="cat-name">Poke Kids</div>
+      <div class="cat-desc">Versões menores para uma fome mais tranquila.</div>
+      <div class="cat-count">14 opções</div>
     </div>
     <div class="cat-card reveal d2">
-      <div class="cat-emoji">🔥</div>
-      <div class="cat-name">Hot Roll</div>
-      <div class="cat-desc">Crocante por fora, recheado por dentro. Os favoritos da casa.</div>
-      <div class="cat-count">Ver no cardápio →</div>
+      <div class="cat-emoji">🍱</div>
+      <div class="cat-name">Poke Monstro</div>
+      <div class="cat-desc">Porções maiores com mais shari, proteína e acompanhamentos.</div>
+      <div class="cat-count">13 opções</div>
     </div>
     <div class="cat-card reveal d3">
       <div class="cat-emoji">🥢</div>
-      <div class="cat-name">Especiais</div>
-      <div class="cat-desc">Criações exclusivas do chef com ingredientes premium.</div>
-      <div class="cat-count">Ver no cardápio →</div>
+      <div class="cat-name">Combinadélis</div>
+      <div class="cat-desc">Combinados com peças variadas para dividir.</div>
+      <div class="cat-count">4 opções</div>
+    </div>
+    <div class="cat-card reveal">
+      <div class="cat-emoji">🌯</div>
+      <div class="cat-name">Temakis</div>
+      <div class="cat-desc">Cones de alga com arroz, salmão e recheios especiais.</div>
+      <div class="cat-count">13 opções</div>
+    </div>
+    <div class="cat-card reveal d1">
+      <div class="cat-emoji">🍙</div>
+      <div class="cat-name">Onigiri</div>
+      <div class="cat-desc">Bolinchan de arroz em várias combinações.</div>
+      <div class="cat-count">22 opções</div>
+    </div>
+    <div class="cat-card reveal d2">
+      <div class="cat-emoji">🍋</div>
+      <div class="cat-name">Ceviche</div>
+      <div class="cat-desc">Opções frescas com salmão, tilápia e camarão.</div>
+      <div class="cat-count">5 opções</div>
+    </div>
+    <div class="cat-card reveal d3">
+      <div class="cat-emoji">🍣</div>
+      <div class="cat-name">Sashimizélis</div>
+      <div class="cat-desc">Sashimis em porções de 5 e 10 peças.</div>
+      <div class="cat-count">5 opções</div>
+    </div>
+    <div class="cat-card reveal">
+      <div class="cat-emoji">🍣</div>
+      <div class="cat-name">Uramakichan</div>
+      <div class="cat-desc">Uramaki filadélfia em porções menores.</div>
+      <div class="cat-count">2 opções</div>
+    </div>
+    <div class="cat-card reveal d1">
+      <div class="cat-emoji">🥗</div>
+      <div class="cat-name">Ussuzukuri</div>
+      <div class="cat-desc">Carpaccio de salmão, tilápia ou misto.</div>
+      <div class="cat-count">4 opções</div>
+    </div>
+    <div class="cat-card reveal d2">
+      <div class="cat-emoji">🥤</div>
+      <div class="cat-name">Bebidas</div>
+      <div class="cat-desc">Refrigerantes, sucos, água e cervejas.</div>
+      <div class="cat-count">12 opções</div>
     </div>
   </div>
 </section>
@@ -844,9 +994,14 @@ footer {
   <h2 class="pedir-title reveal">PEÇA<br>AGORA</h2>
   <p class="pedir-sub reveal">Escolha sua plataforma favorita e receba seus sushis fresquinhos em casa.</p>
   <div class="pedir-btns reveal">
-    <!-- 🔗 TROCAR HREF pelos links reais -->
-    <a href="https://www.ifood.com.br" target="_blank" class="btn-pedir-ifood">🛵 Abrir no iFood</a>
-    <a href="https://anota.ai" target="_blank" class="btn-pedir-anota">📲 Abrir no Anota.ai</a>
+    <a href="https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574" target="_blank" class="btn-pedir-ifood">
+      <img class="btn-logo btn-logo-ifood" src="img/ifood-nobg.png" alt="">
+      Abrir no iFood
+    </a>
+    <a href="https://pedido.anota.ai/loja/yume-1" target="_blank" class="btn-pedir-anota">
+      <img class="btn-logo btn-logo-anota" src="img/anotaai-nobg.png" alt="">
+      Abrir no Anota.ai
+    </a>
   </div>
 </section>
 
@@ -854,29 +1009,29 @@ footer {
 <section id="depoimentos">
   <div class="depo-header">
     <span class="section-eyebrow">Avaliações</span>
-    <h2 class="section-title reveal" style="color:var(--navy);">O QUE DIZEM <span class="accent">NOSSOS FÃS</span></h2>
+    <h2 class="section-title reveal" style="color:var(--navy);">O QUE DIZEM <span class="accent">NOSSOS CLIENTES</span></h2>
   </div>
   <div class="depo-grid">
     <div class="depo-card reveal">
       <div class="depo-stars">★★★★★</div>
-      <p class="depo-text">"Melhor sushi de delivery da cidade! O salmão é sempre fresquíssimo e as peças chegam perfeitas. Já pedi mais de 20 vezes."</p>
+      <p class="depo-text">"Pedido chegou caprichado, bem embalado e com tudo fresquinho. O poke de salmão virou meu favorito."</p>
       <div class="depo-divider"></div>
       <div class="depo-name">Mariana S.</div>
-      <div class="depo-local">Avaliação no iFood</div>
+      <div class="depo-local">Pedido via delivery</div>
     </div>
     <div class="depo-card reveal d1">
       <div class="depo-stars">★★★★★</div>
-      <p class="depo-text">"O combinado especial Yume é simplesmente perfeito. Quantidade boa, preço justo e entrega bem rápida. Já é meu pedido fixo toda sexta."</p>
+      <p class="depo-text">"As peças vieram bonitas, o sabor estava ótimo e a entrega foi rápida. Dá para sentir o cuidado no preparo."</p>
       <div class="depo-divider"></div>
-      <div class="depo-name">Lucas M.</div>
-      <div class="depo-local">Avaliação no Anota.ai</div>
+      <div class="depo-name">Camila R.</div>
+      <div class="depo-local">Pedido via Anota.ai</div>
     </div>
     <div class="depo-card reveal d2">
       <div class="depo-stars">★★★★★</div>
-      <p class="depo-text">"Hot roll crocante sensacional! Nunca vi um delivery que mantém tão bem a textura. Embalagem ótima e atendimento muito atencioso."</p>
+      <p class="depo-text">"Combinado bem servido, apresentação linda e atendimento atencioso. Com certeza vou pedir de novo."</p>
       <div class="depo-divider"></div>
-      <div class="depo-name">Camila R.</div>
-      <div class="depo-local">Avaliação no iFood</div>
+      <div class="depo-name">Juliana M.</div>
+      <div class="depo-local">Pedido via iFood</div>
     </div>
   </div>
 </section>
@@ -893,32 +1048,30 @@ footer {
     <div class="ft-col">
       <h4>Cardápio</h4>
       <ul>
-        <li><a href="#">Combinados</a></li>
-        <li><a href="#">Temaki</a></li>
-        <li><a href="#">Hot Roll</a></li>
-        <li><a href="#">Especiais</a></li>
+        <li><a href="#cardapio">Pokes</a></li>
+        <li><a href="#cardapio">Combinadélis</a></li>
+        <li><a href="#cardapio">Temakis</a></li>
+        <li><a href="#cardapio">Onigiri</a></li>
       </ul>
     </div>
     <div class="ft-col">
       <h4>Pedidos</h4>
       <ul>
-        <!-- 🔗 TROCAR HREF pelos links reais -->
-        <li><a href="https://www.ifood.com.br" target="_blank">iFood</a></li>
-        <li><a href="https://anota.ai" target="_blank">Anota.ai</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">WhatsApp</a></li>
+        <li><a href="https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574" target="_blank">iFood</a></li>
+        <li><a href="https://pedido.anota.ai/loja/yume-1" target="_blank">Anota.ai</a></li>
+        <li><a href="https://www.instagram.com/yume_asianfood/" target="_blank">Instagram</a></li>
+        <li><a href="https://api.whatsapp.com/send?phone=554298159552&text=Ola%21%20Vim%20pelo%20site%20da%20Yume%20Asian%20Food%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank">WhatsApp</a></li>
       </ul>
     </div>
   </div>
   <div class="ft-bottom">
     <p class="ft-copy">© 2025 Yume Asian Food. Todos os direitos reservados.</p>
-    <div class="ft-social">
-      <a href="#" class="soc">IG</a>
-      <a href="#" class="soc">WA</a>
-      <a href="#" class="soc">TK</a>
-    </div>
   </div>
 </footer>
+
+<div class="developer-credit">
+  <a href="https://alanmikeo.github.io/alanmikeo/" target="_blank" rel="noopener">Made by <span style="font-size: medium;">alanmikeo</span></a>
+</div>
 
 <script>
   // Navbar scroll
