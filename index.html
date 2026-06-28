@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yume Asian Food | Sushi e comida asiática em Guarapuava</title>
-<meta name="description" content="Yume Asian Food em Guarapuava: sushi, pokes, temakis, combinados e comida asiática para delivery. Peça pelo iFood, Anota.ai ou WhatsApp.">
+<meta name="description" content="Yume Asian Food em Guarapuava: sushi delivery, pokes, temakis, hot roll, onigiri e combinados. Peça pelo iFood, Anota.ai ou WhatsApp.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Yume Asian Food">
@@ -17,12 +17,12 @@
 <meta property="og:site_name" content="Yume Asian Food">
 <meta property="og:url" content="https://alanmikeo.github.io/yume-asian-food/">
 <meta property="og:title" content="Yume Asian Food | Sushi e comida asiática em Guarapuava">
-<meta property="og:description" content="Sushi, pokes, temakis, combinados e comida asiática para delivery em Guarapuava. Peça pelo iFood, Anota.ai ou WhatsApp.">
+<meta property="og:description" content="Sushi delivery em Guarapuava com pokes, temakis, hot roll, onigiri e combinados. Peça pelo iFood, Anota.ai ou WhatsApp.">
 <meta property="og:image" content="https://alanmikeo.github.io/yume-asian-food/img/combo.png">
 <meta property="og:image:alt" content="Combinado da Yume Asian Food">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yume Asian Food | Sushi e comida asiática em Guarapuava">
-<meta name="twitter:description" content="Delivery de sushi, pokes, temakis e combinados em Guarapuava.">
+<meta name="twitter:description" content="Sushi delivery em Guarapuava com pokes, temakis, hot roll, onigiri e combinados.">
 <meta name="twitter:image" content="https://alanmikeo.github.io/yume-asian-food/img/combo.png">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="canonical" href="https://alanmikeo.github.io/yume-asian-food/">
@@ -37,19 +37,37 @@
   "servesCuisine": ["Japonesa", "Asiática", "Sushi", "Poke"],
   "telephone": "+554298159552",
   "priceRange": "$$",
+  "hasMap": "https://share.google/AcCk21bOALAgIK6Bh",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "R. Brg. Rocha - Centro",
     "addressLocality": "Guarapuava",
     "addressRegion": "PR",
+    "postalCode": "85010-210",
     "addressCountry": "BR"
   },
   "areaServed": {
     "@type": "City",
     "name": "Guarapuava"
   },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "12:00",
+      "closes": "14:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "17:45",
+      "closes": "22:00"
+    }
+  ],
   "hasMenu": "https://pedido.anota.ai/loja/yume-1",
   "sameAs": [
     "https://www.instagram.com/yume_asianfood/",
+    "https://www.google.com/search?kgmid=%2Fg%2F11n3wqhrs4&q=Yume+Asian+Food",
     "https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574",
     "https://pedido.anota.ai/loja/yume-1"
   ],
@@ -75,7 +93,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --cream:    #D6CFC0;
+  --cream:    #ecddc4;
   --cream2:   #C9C1B0;
   --cream3:   #EAE4D8;
   --navy:     #2B2D82;
@@ -119,24 +137,17 @@ nav.scrolled {
   padding: 14px 60px;
   border-bottom: 1px solid rgba(43,45,130,0.12);
 }
-.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-kanji {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1.8rem; font-weight: 700;
-  color: var(--navy);
-  line-height: 1;
+.logo-wrap { display: flex; align-items: center; text-decoration: none; }
+.brand-logo-img {
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+  display: block;
+  transition: width 0.3s ease, height 0.3s ease;
 }
-.logo-text-wrap { display: flex; flex-direction: column; line-height: 1; }
-.logo-yume {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem; letter-spacing: 0.08em;
-  color: var(--red); line-height: 1;
-}
-.logo-asian {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.52rem; letter-spacing: 0.42em;
-  text-transform: uppercase; color: var(--navy);
-  font-weight: 500; margin-top: 2px;
+nav.scrolled .brand-logo-img {
+  width: 96px;
+  height: 96px;
 }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a {
@@ -211,12 +222,12 @@ nav.scrolled {
 }
 .hero-left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 112px 60px 48px;
+  padding: 112px 60px 88px;
   position: relative; z-index: 2;
 }
 .hero-tag {
   display: inline-flex; align-items: center; gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.3s;
 }
 .hero-tag-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
@@ -239,15 +250,25 @@ nav.scrolled {
   user-select: none;
 }
 .hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 8vw, 7.6rem);
-  line-height: 0.9;
-  letter-spacing: 0.03em;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.5s;
 }
-.hero-title .t-navy { color: var(--navy); }
-.hero-title .t-red  { color: var(--red);  }
+.hero-title-logo {
+  width: min(100%, 280px);
+  height: auto;
+  display: block;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .hero-sub-title {
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.8rem, 1.4vw, 1rem);
@@ -255,13 +276,35 @@ nav.scrolled {
   text-transform: uppercase;
   color: var(--text2);
   font-weight: 400;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.65s;
 }
+.hero-local {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border: 1px solid rgba(43,45,130,0.18);
+  color: var(--navy);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.72s;
+}
+.hero-local::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+}
 .hero-desc {
-  font-size: 0.95rem; line-height: 1.85;
+  font-size: 0.88rem; line-height: 1.55;
   color: var(--text2); font-weight: 300;
-  max-width: 380px; margin-bottom: 30px;
+  max-width: 390px; margin-bottom: 18px;
   opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.8s;
 }
 .hero-ctas {
@@ -556,6 +599,70 @@ nav.scrolled {
 }
 .cat-card:hover .cat-count { color: var(--red2); }
 
+/* ── LOCAL / ENTREGA ── */
+#local {
+  padding: 100px 60px;
+  background: var(--cream3);
+  position: relative;
+  z-index: 1;
+}
+.local-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
+}
+.local-text {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--text2);
+  max-width: 560px;
+}
+.local-details {
+  display: grid;
+  gap: 3px;
+}
+.local-card {
+  background: var(--cream);
+  padding: 24px 26px;
+  border-left: 3px solid var(--red);
+}
+.local-label {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.local-value {
+  color: var(--navy);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.local-map-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid rgba(178, 32, 44, 0.26);
+  background: var(--white);
+  color: var(--red);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.local-map-link:hover {
+  background: var(--red);
+  color: var(--white);
+}
+
 /* ── PEDIDO / CTA ── */
 #pedir {
   background: var(--red);
@@ -661,9 +768,17 @@ footer {
   border-bottom: 1px solid rgba(214,207,192,0.08);
   margin-bottom: 36px;
 }
-.ft-logo-kanji { font-family: 'Noto Serif JP', serif; font-size: 3rem; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 8px; }
-.ft-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; color: var(--red); line-height: 1; }
-.ft-logo-tag { font-size: 0.52rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(214,207,192,0.4); display: block; margin-top: 5px; margin-bottom: 18px; }
+.ft-logo-img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 18px;
+  background: var(--cream);
+  border-radius: 50%;
+  padding: 6px;
+}
+.ft-logo-tag { font-size: 0.52rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(214,207,192,0.4); display: block; margin-bottom: 18px; }
 .ft-brand-desc { font-size: 0.83rem; line-height: 1.8; color: rgba(214,207,192,0.3); font-weight: 300; max-width: 280px; }
 .ft-col h4 { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(214,207,192,0.4); margin-bottom: 22px; }
 .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -693,9 +808,10 @@ footer {
   .hero-badge { bottom: 48px; }
   .marquee-strip { position: relative; grid-column: 1 / -1; width: 100%; }
   .hero-img-overlay { background: linear-gradient(to top, var(--cream) 0%, transparent 40%); }
-  #pratos, #sobre, #cardapio, #pedir, #depoimentos { padding: 90px 40px; }
+  #pratos, #sobre, #cardapio, #local, #pedir, #depoimentos { padding: 90px 40px; }
   .sobre-wrap { grid-template-columns: 1fr; gap: 56px; }
   .sobre-img { width: min(100%, 360px); height: auto; }
+  .local-wrap { grid-template-columns: 1fr; gap: 36px; }
   .pratos-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   .pratos-note { text-align: left; }
   .pratos-grid { grid-template-columns: 1fr 1fr; }
@@ -707,10 +823,13 @@ footer {
   .nav-links { display: none; }
   .nav-order { display: none; }
   nav, nav.scrolled { padding: 18px 24px; }
+  .brand-logo-img,
+  nav.scrolled .brand-logo-img { width: 96px; height: 96px; }
   #hero { grid-template-columns: 1fr; }
   .hero-left { padding: 110px 24px 60px; }
+  .hero-title-logo { width: min(100%, 320px); }
   .hero-right { height: 320px; }
-  #pratos, #sobre, #cardapio, #pedir, #depoimentos { padding: 80px 24px; }
+  #pratos, #sobre, #cardapio, #local, #pedir, #depoimentos { padding: 80px 24px; }
   .pratos-grid { grid-template-columns: 1fr; }
   .prato-card:nth-child(1) { grid-column: auto; }
   .cardapio-grid { grid-template-columns: 1fr 1fr; }
@@ -731,15 +850,12 @@ footer {
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="logo-wrap">
-    <span class="logo-kanji">夢</span>
-    <div class="logo-text-wrap">
-      <span class="logo-yume">YUME</span>
-      <span class="logo-asian">Asian Food</span>
-    </div>
+    <img class="brand-logo-img" src="img/yume-logo-nobg.png" alt="Yume Asian Food">
   </a>
   <ul class="nav-links">
     <li><a href="#pratos">Pratos</a></li>
     <li><a href="#cardapio">Cardápio</a></li>
+    <li><a href="#local">Local</a></li>
     <li><a href="#sobre">Nossa História</a></li>
   </ul>
   <div class="nav-order">
@@ -760,16 +876,16 @@ footer {
     <div class="hero-kanji-bg">夢</div>
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
-      <span class="hero-tag-text">Delivery · Sushi & Asian Food</span>
+      <span class="hero-tag-text">Sushi delivery em Guarapuava</span>
     </div>
     <h1 class="hero-title">
-      <span class="t-navy">YUME</span><br>
-      <span class="t-red">ASIAN</span><br>
-      <span class="t-navy">FOOD</span>
+      <span class="sr-only">Yume Asian Food</span>
+      <img class="hero-title-logo" src="img/yume-logo-nobg.png" alt="">
     </h1>
     <p class="hero-sub-title">Sabor autêntico, entregue até você</p>
+    <div class="hero-local">Entrega em toda a cidade · Retirada no balcão</div>
     <p class="hero-desc">
-      Do Japão para sua mesa — sushis artesanais, combinados especiais e muito mais. Peça agora pelo iFood ou Anota.ai e receba com rapidez.
+      Cardápio com sushi artesanal, pokes, temakis, hot roll, onigiri e combinados para pedir online pelo iFood, Anota.ai ou WhatsApp.
     </p>
     <div class="hero-ctas">
       <a href="https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574" target="_blank" class="cta-ifood">
@@ -987,6 +1103,38 @@ footer {
   </div>
 </section>
 
+<!-- LOCAL / ENTREGA -->
+<section id="local">
+  <div class="local-wrap">
+    <div class="reveal">
+      <span class="section-eyebrow">Guarapuava</span>
+      <h2 class="section-title">SUSHI E COMIDA<br><span class="accent">ASIÁTICA NO CENTRO</span></h2>
+      <p class="local-text">
+        A Yume Asian Food atende toda Guarapuava com delivery e retirada no balcão. Estamos no Centro, com preparo cuidadoso, cardápio variado e canais diretos para você pedir pelo iFood, Anota.ai ou WhatsApp.
+      </p>
+    </div>
+    <div class="local-details reveal d1">
+      <div class="local-card">
+        <span class="local-label">Endereço</span>
+        <div class="local-value">R. Brg. Rocha - Centro<br>Guarapuava - PR, 85010-210</div>
+        <a class="local-map-link" href="https://share.google/AcCk21bOALAgIK6Bh" target="_blank" rel="noopener">Ver no Google Maps</a>
+      </div>
+      <div class="local-card">
+        <span class="local-label">Atendimento</span>
+        <div class="local-value">Delivery para toda Guarapuava e retirada no balcão</div>
+      </div>
+      <div class="local-card">
+        <span class="local-label">Horários</span>
+        <div class="local-value">Terça a domingo<br>12h às 14h · 17h45 às 22h</div>
+      </div>
+      <div class="local-card">
+        <span class="local-label">Pedidos</span>
+        <div class="local-value">iFood, Anota.ai e WhatsApp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA PEDIDO -->
 <section id="pedir">
   <div class="pedir-kanji">夢</div>
@@ -1040,8 +1188,7 @@ footer {
 <footer>
   <div class="ft-top">
     <div>
-      <div class="ft-logo-kanji">夢</div>
-      <div class="ft-logo-name">YUME</div>
+      <img class="ft-logo-img" src="img/yume-logo-nobg.png" alt="Yume Asian Food">
       <span class="ft-logo-tag">Asian Food · Delivery</span>
       <p class="ft-brand-desc">Sushi artesanal entregue com rapidez e cuidado. Disponível no iFood e Anota.ai.</p>
     </div>
@@ -1052,6 +1199,7 @@ footer {
         <li><a href="#cardapio">Combinadélis</a></li>
         <li><a href="#cardapio">Temakis</a></li>
         <li><a href="#cardapio">Onigiri</a></li>
+        <li><a href="#local">Localização</a></li>
       </ul>
     </div>
     <div class="ft-col">
@@ -1060,6 +1208,7 @@ footer {
         <li><a href="https://www.ifood.com.br/delivery/guarapuava-pr/yume-trianon/b8b60064-39fd-425e-a385-630ad7453574" target="_blank">iFood</a></li>
         <li><a href="https://pedido.anota.ai/loja/yume-1" target="_blank">Anota.ai</a></li>
         <li><a href="https://www.instagram.com/yume_asianfood/" target="_blank">Instagram</a></li>
+        <li><a href="https://share.google/AcCk21bOALAgIK6Bh" target="_blank" rel="noopener">Google Maps</a></li>
         <li><a href="https://api.whatsapp.com/send?phone=554298159552&text=Ola%21%20Vim%20pelo%20site%20da%20Yume%20Asian%20Food%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank">WhatsApp</a></li>
       </ul>
     </div>
